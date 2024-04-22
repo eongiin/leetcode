@@ -3,14 +3,14 @@ class Solution {
 
         if (nums.size % k != 0) return false
         
-        var map = HashMap<Int, Int>()
+        var map = TreeMap<Int, Int>()
         for (i in nums) {
             map[i] = map.getOrDefault(i, 0) + 1
         }
 
 
         while (map.isNotEmpty()) {
-            val key = map.keys.minOrNull() ?: return false
+            val key = map.firstKey()
             for (i in 0 until k) {
                 val nextKey = key + i
                 if (map.containsKey(nextKey)) {
